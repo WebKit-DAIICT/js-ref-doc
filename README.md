@@ -2,83 +2,144 @@ JS Reference Doc
 ============
 ## Functions
 
+---
 
 #### `whenPageIsReady`
 Executes all the code written inside the function, passed as a parameter, when the page is ready.
 
----
+```js
 
-#### `getElement`
-Get element based on the parameter `selector`.
+function whenPageIsReady(func) {
+    // If the page is not loading, it's ready.
+    if (document.readyState != 'loading') {
+        // Execute the func passed.
+        func();
+    } else {
+        // Wait for the Page to get Loaded and execute the func passed.
+        document.addEventListener('DOMContentLoaded', function(){
+          console.log("function called");
+        });
+    }
+}
+
+```
 
 ---
 
 #### `click`
 Add `addEventListener` to the `element` passed as the parameter.
 
+```js
+
+function click(element, func) {
+    if (element) {
+        element.addEventListener("click", func(){
+            console.log("Listener func called");
+        });
+    }
+}
+
+```
+
 ---
 
 #### `onClickMultiple`
 Executes the given function if the element has the parameter `className`.
 
+```js
+
+function onClickMultiple(className, func) {
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains(className)) {
+            func(event.target);
+        }
+    });
+}
+
+```
+
 ---
 
 #### `scrollToBottom`
-Scrolls to the bottom of the given element.
+Scrolls an element to the bottom.
+
+```js
+
+function scrollToBottom(element) {
+    element.scrollTop = element.scrollHeight;
+}
+
+```
 
 ---
 
 #### `redirectTo`
 Redirects your browser to the `page` parameter passed.
 
----
+```js
 
-#### `scrollToLatestMessage`
-Scroll to the Latest Message
+function redirectTo(page) {
+    window.location = page;
+}
 
----
 
-#### `ifUserIsLoggedIn`
-If User is logged in, executes the function callback given as a parameter.
-Else call `redirectTo` with `index.html` as parameter.
+```
 
 ---
 
-#### `renderChatPage`
-Render the chat page
-  - Hide Page loader
-  - Display Chat Area
-  - Update page with user data
+#### Get / select an element.
+Specify html `id` of the element with a #
+
+```js
+
+var element = getElement('#element');
+console.log(element);
+
+```
 
 ---
 
-#### `updatePageWithUserData`
-Update page with logged in user data based on `user` object passed as parameter.
+#### Add a class to an element.
+Specify html `id` of the element with a #
+
+```js
+
+var element = getElement('#element');
+
+element.classList.add('className');
+
+console.log("Added " + className);
+
+```
 
 ---
 
-#### `logoutUser`
-Logout the current user.
+#### Remove a class from an element.
+Specify html `id` of the element with a #
+
+```js
+
+var element = getElement('#element');
+
+element.classList.remove('className');
+
+console.log("Removed " + className);
+
+```
 
 ---
 
-#### `createUser`
-Create new user in the firebase based on `user` object passed as parameter.
+#### Set a attribute to an element.
+Specify html `id` of the element with a #
 
----
+```js
 
-#### `loadMembers`
-Fetch users list from firebase and executes the function callback passed as parameter.
+var element = getElement('#element');
 
----
+element.setAttribute('key', value);
 
-#### `makeMemberItem`
-Create member html element to be attached in the members area.
-Element is created based on the `member` object passed as parameter.
+console.log("Added attribute" + key + ": " + value);
 
----
-
-#### `getUser`
-Get user data based on his `uid` passed as parameter.
+```
 
 ---
