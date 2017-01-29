@@ -2,7 +2,6 @@ JS Reference Doc
 ============
 ## Functions
 
----
 
 #### `whenPageIsReady`
 Executes all the code written inside the function, passed as a parameter, when the page is ready.
