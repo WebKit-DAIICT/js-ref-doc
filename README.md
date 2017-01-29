@@ -24,8 +24,6 @@ function whenPageIsReady(func) {
 
 ```
 
----
-
 #### `click`
 Add `addEventListener` to the `element` passed as the parameter.
 
@@ -93,6 +91,7 @@ Specify html `id` of the element with a #
 ```js
 
 var element = getElement('#element');
+
 console.log(element);
 
 ```
